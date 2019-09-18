@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14306.4" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14278.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14237"/>
+    </dependencies>
+    <scenes>
+        <!--MainController-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller identifier="MainController" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="AreYouFocused_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <button width="1" alignment="left" title="Set Notifications" id="7K5-bG-JtX">
+                            <color key="backgroundColor" red="0.51709241340000001" green="0.094166750039999997" blue="0.1122381537" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="setNotifications" destination="AgC-eL-Hgc" id="QTo-UB-gvl"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title="Notify!" id="9Vk-Pl-MRe">
+                            <connections>
+                                <action selector="notifyTap" destination="AgC-eL-Hgc" id="GwG-DP-pTh"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="notifyButton" destination="9Vk-Pl-MRe" id="dUP-zt-gVi"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="345"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="98V-pd-vJ4">
+            <objects>
+                <notificationController id="IJn-L7-G4c">
+                    <items>
+                        <label alignment="left" text="Alert Label" id="dn5-MD-KUY"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="focusedCategory" id="25n-uc-pPA"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="dn5-MD-KUY" id="geh-dS-beh"/>
+                        <segue destination="gcD-fs-p27" kind="relationship" relationship="dynamicNotificationInterface" id="olU-I9-0Tm"/>
+                        <segue destination="Nwf-yj-9rz" kind="relationship" relationship="dynamicInteractiveNotificationInterface" id="auu-gy-u6X"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="220" y="649"/>
+        </scene>
+        <!--Dynamic Interface Controller-->
+        <scene sceneID="fwo-Mc-1QM">
+            <objects>
+                <controller id="gcD-fs-p27" customClass="DynamicInterfaceController" customModule="AreYouFocused_WatchKit_Extension"/>
+            </objects>
+            <point key="canvasLocation" x="520" y="649"/>
+        </scene>
+        <!--Focused Notification Controller-->
+        <scene sceneID="TAx-vU-5zL">
+            <objects>
+                <controller id="Nwf-yj-9rz" customClass="focusedNotificationController" customModule="AreYouFocused_WatchKit_Extension">
+                    <items>
+                        <label alignment="center" text="Are you focused?" numberOfLines="0" id="ECE-Ik-L5N"/>
+                        <button width="1" alignment="left" title="Yes! 😁" id="wym-pK-r3o" userLabel="yesTap">
+                            <connections>
+                                <action selector="yesTapped" destination="Nwf-yj-9rz" id="24E-d3-sTG"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title="No 😞" id="9UJ-1h-WDO">
+                            <connections>
+                                <action selector="noTapped" destination="Nwf-yj-9rz" id="95q-WE-7la"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" hidden="YES" title="Thanks!" id="nk7-Kp-xyK">
+                            <connections>
+                                <action selector="thanksTapped" destination="Nwf-yj-9rz" id="e9c-Jl-Dwf"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <color key="backgroundColor" red="0.29141947029999998" green="0.70628707859999995" blue="0.78612775260000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <outlet property="alertLabel" destination="ECE-Ik-L5N" id="So2-9h-3sf"/>
+                        <outlet property="noButton" destination="9UJ-1h-WDO" id="j7X-6U-JRg"/>
+                        <outlet property="thanksButton" destination="nk7-Kp-xyK" id="vMi-4j-4MG"/>
+                        <outlet property="yesButton" destination="wym-pK-r3o" id="RbB-pl-Wz9"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="520" y="349"/>
+        </scene>
+    </scenes>
+</document>
